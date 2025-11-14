@@ -10,8 +10,7 @@ default: agent-rules install lint test
 
 install:
 	uv sync --all-extras
-	@echo "Installing pre-commit hooks..."
-	uv run prek install
+	uv tool install prek
 
 lint:
 	uv run prek

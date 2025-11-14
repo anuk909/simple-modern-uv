@@ -19,10 +19,10 @@ repos:
     hooks:
       # Run the linter.
       - id: ruff-check
-        types_or: [ python, pyi ]
-        args: [ --fix ]
+        types_or: [python, pyi]
+        args: [--fix]
       # Run the formatter.
       - id: ruff-format
-        types_or: [ python, pyi ]
+        types_or: [python, pyi]
 
 default_stages: [commit]
