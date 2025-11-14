@@ -2,7 +2,7 @@
 
 _min_copier_version: "9.4.0"
 _subdirectory: template
-_message_after_copy: | 
+_message_after_copy: |
     Your package template has been copied!
 
     Remember to look for any unfilled `changeme` strings and confirm the license!
@@ -10,7 +10,7 @@ _message_after_copy: |
     See `license` in pyproject.yaml and update the LICENSE file. 
 
     Next steps:
-    
+
     cd PROJECT
     git init
     # Make license or other initial adjustments if needed.
@@ -20,6 +20,12 @@ _message_after_copy: |
     git remote add origin git@github.com:OWNER/PROJECT.git  # or https://...
     git branch -M main
     git push -u origin main
+
+    # Install just if you haven't already:
+    # See: https://github.com/casey/just#installation
+
+    # Then setup your development environment:
+    just setup
 
 package_name:
     type: str

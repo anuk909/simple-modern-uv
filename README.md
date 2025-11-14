@@ -22,42 +22,42 @@ project, like an open source library or tool.
 ## In a Hurry?
 
 > [!TIP]
-> 
+>
 > You can try out this template right from your terminal.
 > Try running:
-> 
+>
 > ```shell
 > uvx uvinit
 > ```
-> 
+>
 > The [uvinit](https://git.new/uvinit) tool now walks you through using this template.
-> 
+>
 > For more installation options, scroll down to [How to Use This
 > Template](#how-to-use-this-template).
 
 ## Why a New Python Project Template?
 
 > **The Story So Far**
-> 
+>
 > In the beginning, there was a hack called
 > [`setup.py`](https://github.com/pypa/setuptools) for packaging (1990s–2000s) and it
 > was not good.
-> 
+>
 > Then there arose [`virtualenv`](https://github.com/pypa/virtualenv),
 > [`pip`](https://github.com/pypa/pip), and `requirements.txt` for isolated environments
 > (2008–2011). Yet confusion still reigned.
-> 
+>
 > Meanwhile, [`conda`](https://github.com/conda/conda),
 > [`pyenv`](https://github.com/pyenv/pyenv), [`brew`](https://github.com/Homebrew/brew),
 > and [`PyInstaller`](https://github.com/pyinstaller/pyinstaller) vied to rule the
 > system installations (2010s).
-> 
+>
 > Years of dissatisfaction led to the spread of a new religion,
 > [`pyproject.toml`](https://github.com/pypa/pyproject.toml).
 > Adherents of [`poetry`](https://github.com/python-poetry/poetry),
 > [`pipenv`](https://github.com/pypa/pipenv), and [`pipx`](https://github.com/pypa/pipx)
 > promised peace and prosperity (2020s) yet somehow, life felt mostly the same.
-> 
+>
 > Then AI robots began to invade.
 > Rebel forces [`uv`](https://github.com/astral-sh/uv) and
 > [`pixi`](https://github.com/prefix-dev/pixi) aligned with Rust gathered strength …
@@ -87,7 +87,7 @@ or blog posts (that are typically not maintained or updated).
 
 I think a good project template should be **3 Ms: minimalist, modern, and maintained**.
 I looked at [other templates](#alternatives) but wanted one that was modern and "done
-right" but *absolutely as simple as possible*. Few existing templates seem to be both
+right" but _absolutely as simple as possible_. Few existing templates seem to be both
 simple and use the newest generation of tools and best practices.
 
 The template is short enough to read and understand in about 10 minutes.
@@ -97,7 +97,7 @@ want without fuss.
 Because this template is minimal, you can always start with it and then pull in other
 tools and features if you want them.
 (In fact, even if you don't like this template, you might want to use it as inspiration
-for your *own* Copier template, to take advantage of the Copier update workflow
+for your _own_ Copier template, to take advantage of the Copier update workflow
 discussed next.)
 
 ## Why Use Copier?
@@ -115,7 +115,7 @@ You could even fork this repo yourself, then build your own forked template, and
 maintain it yourself.
 
 > [!NOTE]
-> 
+>
 > If you're not familiar with Copier, take a moment to understand the
 > [update feature](#updating-your-project-template).
 > Then the options below will make sense.
@@ -127,8 +127,8 @@ maintain it yourself.
 simple-modern-uv uses uses the tools I've come to think are best for new projects:
 
 - [**uv**](https://github.com/astral-sh/uv) for project setup and dependencies.
-  There is also a simple makefile for dev workflows, but it simply is a convenience for
-  running uv commands.
+  There is also a simple justfile for dev workflows, which provides convenient shortcuts
+  for running uv commands.
 
 - [**ruff**](https://github.com/charliermarsh/ruff) for modern linting and formatting.
   Previously, [black](https://github.com/psf/black) was the definitive formatting tool,
@@ -177,7 +177,7 @@ The template includes a few **starter docs** for you, collaborators, and users:
   covers how to publish your project to PyPI.
 
 > [!TIP]
-> 
+>
 > If you haven't done it before, publishing a package to PyPI can be a bit confusing,
 > especially because the
 > [official Python docs](https://packaging.python.org/en/latest/guides/section-build-and-publish/)
@@ -198,7 +198,7 @@ These cover a few specific rules for modern Python as well as remind agents to b
 lint, and run tests correctly using uv.
 
 The rules are in [.cursor/rules](template/.cursor/rules) and copied by the
-[Makefile](template/Makefile) to
+[justfile](template/justfile) to
 [`CLAUDE.md`](https://docs.anthropic.com/en/docs/claude-code/memory) and
 [`AGENTS.md`](https://github.com/openai/codex#memory--project-docs) so that the same
 rules work for Claude Code and OpenAI Codex.
@@ -275,7 +275,7 @@ references.
 ## How to Use This Template
 
 > [!NOTE]
-> 
+>
 > By default this template uses MIT license.
 > If you want a different license or are not publishing your project as open source,
 > update `license` in pyproject.yaml and the LICENSE file.
@@ -342,6 +342,14 @@ git remote add origin git@github.com:OWNER/PROJECT.git  # or https://github.com/
 git branch -M main
 git push -u origin main
 ```
+
+> [!NOTE]
+>
+> This template now uses [just](https://github.com/casey/just) for task running instead
+> of Make. You'll need to install just to use the development commands. See the
+> [installation instructions](https://github.com/casey/just#installation) for your
+> platform. On macOS: `brew install just`, on Linux: `cargo install just` or use your
+> package manager.
 
 ### Option 3: Use the GitHub Template
 

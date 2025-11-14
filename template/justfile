@@ -1,0 +1,63 @@
+module_name := "{{ package_module }}"
+
+# list commands
+default:
+  @just --list
+
+# setup for development
+setup: install git-setup
+
+# install the packages
+install:
+  {{{{if path_exists("uv.lock") != "true" {"uv sync --all-extras --inexact"} else {"uv sync --all-extras --locked --inexact"} }}}}
+
+# ensure code quality before git commit via pre-commit
+git-setup: install
+  uv run prek install
+
+# format and sort imports
+format:
+  uv run ruff check --fix --select=I001 .
+  uv run ruff format .
+
+# autofix with ruff
+autofix:
+  uv run ruff check --fix --show-fixes .
+
+# lint with ruff and basedpyright
+lint:
+  uv run prek
+  uv run basedpyright
+
+# run tests
+test:
+  uv run pytest
+
+# update packages and uv lock file
+update:
+  uv sync --upgrade --all-extras
+
+# build the package
+build:
+  uv build
+
+# generate agent rules files
+agent-rules: claude-rules agents-rules
+
+# create CLAUDE.md from cursor rules
+claude-rules:
+  cat .cursor/rules/general.mdc .cursor/rules/python.mdc > CLAUDE.md
+
+# create AGENTS.md from cursor rules
+agents-rules:
+  cat .cursor/rules/general.mdc .cursor/rules/python.mdc > AGENTS.md
+
+# clean build artifacts and caches
+clean:
+  -rm -rf dist/
+  -rm -rf *.egg-info/
+  -rm -rf .pytest_cache/
+  -rm -rf .mypy_cache/
+  -rm -rf .venv/
+  -rm -rf CLAUDE.md AGENTS.md
+  -find . -type d -name "__pycache__" -exec rm -rf {} +
