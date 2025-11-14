@@ -9,7 +9,7 @@ setup: install git-setup
 
 # install the packages
 install:
-  {{{{if path_exists("uv.lock") != "true" {"uv sync --all-extras --inexact"} else {"uv sync --all-extras --locked --inexact"} }}}}
+  {{if path_exists("uv.lock") != "true" {"uv sync --all-extras --inexact"} else {"uv sync --all-extras --locked --inexact"} }}
 
 # ensure code quality before git commit via pre-commit
 git-setup: install
