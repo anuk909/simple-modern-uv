@@ -10,7 +10,7 @@ default: agent-rules install lint test
 
 install:
 	uv sync --all-extras
-	uv tool install prek
+	uv run prek install
 
 lint:
 	uv run prek
