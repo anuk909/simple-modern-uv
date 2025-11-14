@@ -56,8 +56,11 @@ jobs:
       - name: Install all dependencies
         run: uv sync --all-extras
 
-      - name: Run linting
-        run: uv run python devtools/lint.py
+      - name: Run linting - prek (pre-commit)
+        run: uv run prek
+
+      - name: Run linting - pyright
+        run: uv run basedpyright
 
       - name: Run tests
         run: uv run pytest

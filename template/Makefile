@@ -6,13 +6,16 @@
 
 .PHONY: default install lint test upgrade build clean agent-rules
 
-default: agent-rules install lint test 
+default: agent-rules install lint test
 
 install:
 	uv sync --all-extras
+	@echo "Installing pre-commit hooks..."
+	uv run prek install
 
 lint:
-	uv run python devtools/lint.py
+	uv run prek
+	uv run basedpyright
 
 test:
 	uv run pytest
